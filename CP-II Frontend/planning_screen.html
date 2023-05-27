@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Palnning Screen</title>
+
+    <link rel="stylesheet" href="./css/bootstrap.css">
+
+    <style>
+        .tag {
+      display:block;
+      padding: 2px 5px;
+      background-color: #e6e6e6;
+      border-radius: 20px;
+      margin-bottom: 2px;
+    }
+    .tag button {
+      margin-left: 5px;
+      border: none;
+      background-color: transparent;
+      font-size: 16px;
+      color: red;
+      cursor: pointer;
+    }
+    </style>
+
+</head>
+<body class="m-5">
+    <h2 class="text-center">Planning Screen</h2>
+
+                <input class="mt-5" type="radio" id="type_lab" name="type" value="Lecture">
+                <label for="type_lec">LEC</label>
+                <input type="radio" class="ml-3" id="type_lec" name="type" value="Lab">
+                <label for="type_lab">LAB</label>
+
+                <br><br> 
+
+                <select id="semester" class="form-select">
+                    <option value="default" selected >Select Sem</option>
+                    <option value="1">I</option>
+                    <option value="2">II</option>
+                    <option value="3">III</option>
+                    <option value="4">IV</option>
+                    <option value="5">V</option>
+                    <option value="6">VI</option>
+                    <option value="7">VII</option>
+                    <option value="8">VIII</option>
+                </select>
+        
+                <select id="subject" class="form-select ms-3">
+                    <option value="default" selected >Select Subject</option>
+                    <option value="TOC">TOC</option>
+                    <option value="AI">AI</option>
+                    <option value="ITM">ITM</option>
+                    <option value="CC">CC</option>
+                    <option value="WT">WT</option>
+                    <option value="UED">UED</option>
+                </select>
+
+                <select id="class_lab" class="form-select ms-3">
+                    <option value="default" selected >Select Class/LAB</option>
+                    <option value="Class_A">Class-A</option>
+                    <option value="Class_B">Class-B</option>
+                    <option value="Class_C">Class-C</option>
+                    <option value="Class_D">Class-D</option>
+                    <option value="AB9">AB9</option>
+                    <option value="AB12">AB12</option>
+                    <option value="AB14">AB14</option>
+                </select>
+
+    <div name="create chapter button" class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <button class="btn btn-success mt-5" onclick="addSession()">ADD SESSION</button>
+        <button onclick="window.location.href = 'index.html'" class="btn btn-primary mt-5">Create Chapter</button> 
+    </div>
+
+    <br>
+
+    <!-- <div  class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <input style="display: none;" type="text" id="chapNameText">
+        <button id="addBtn" style="display: none;" class="btn btn-success" onclick="addChapter()">ADD SESSION</button>
+    </div> -->
+
+    <br><br>
+    <div class=" text-center mx-auto col-12">
+        <table id="sessionTable" class="table table-bordered table-striped">
+
+            <!-- Table Header -->
+
+            <thead class="table-dark">
+                <tr>
+                    <th>#</th>
+                    <th>Date</th>
+                    <th>Chapter/Unit Name</th>
+                    <th>Toipc Names</th>
+                    <th>Faculty</th>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                <!-- Row -->
+                <tr>
+                    <th scope="row">1</th>
+                    <td> <input type="date"> </td>
+                    <td> 
+                        <select id="chapterName" style="display: block; width: 100%; padding: 0.372rem 2.25rem 0.375rem 0.75rem;">
+                            <option value="default" selected >Select Chapter Name</option>
+                            <option value="unit1">Unit 1 - Introduction to AI</option>
+                            <option value="unit2">Unit 2 - Genetic Algorithm</option>
+                        </select> 
+                    </td>
+                    <td>
+                        <div id="tags-container"></div>
+                        <input type="text" id="tag-input">
+                    </td>
+                    <td>
+                        <select id="facultyName"  style="display: block; width: 100%; padding: 0.372rem 2.25rem 0.375rem 0.75rem;">
+                            <option value="default" selected >Select Faculty</option>
+                            <option value="hms">HMS</option>
+                            <option value="mdt">MDT</option>
+                            <option value="rks">RKS</option>
+                            <option value="pms">PMS</option>
+                        </select> 
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+
+    <script>
+
+        // Code for adding new row !!!
+
+        var chapterDropdown = document.getElementById("chapterName");
+        var sel = document.createElement("select");
+
+        const dateColumn = document.createElement('td');
+        const dateInput = document.createElement('input');
+        dateInput.type = 'date';
+        dateColumn.appendChild(dateInput);
+
+        function addSession(){
+
+            const table = document.getElementById("sessionTable");
+            const tbody = table.getElementsByTagName('tbody')[0];
+
+            // create new row
+            const newRow = document.createElement('tr');
+            
+            // create serial number column
+            const serialColumn = document.createElement('td');
+            serialColumn.textContent = tbody.getElementsByTagName('tr').length + 1;
+            serialColumn.style.fontWeight = "bold"
+            newRow.appendChild(serialColumn);
+  
+            // create date column
+            const dateColumn = document.createElement('td');
+            const dateInput = document.createElement('input');
+            dateInput.type = 'date';
+            dateColumn.appendChild(dateInput);
+            newRow.appendChild(dateColumn);
+            
+            // create  Chapter dropdown column
+            const dropdownColumn = document.createElement('td');
+            const dropdown = document.createElement('select');
+
+            dropdown.style.display= "block";
+            dropdown.style.width="100%";
+            dropdown.style.padding="0.375rem 2.25rem 0.375rem 0.75rem"
+
+            const option1 = document.createElement('option');
+            option1.textContent = 'Select Chapter';
+            const option2 = document.createElement('option');
+            option2.textContent = 'Unit 1 - Introduction to AI 2';
+            const option3 = document.createElement('option');
+            option3.textContent = 'Unit 2 - Genetic Algorithm';
+            dropdown.appendChild(option1);
+            dropdown.appendChild(option2);
+            dropdown.appendChild(option3);
+            dropdownColumn.appendChild(dropdown);
+            newRow.appendChild(dropdownColumn);
+            
+
+            //create tag coloum
+            const tagColoumn = document.createElement('td');
+            const tagsContainer = document.createElement('div');
+            const tagInput = document.createElement('input');
+            tagInput.type = 'text';
+        
+            tagInput.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                const tagText = tagInput.value.trim();
+                if (tagText !== '') {
+                const tagButton = document.createElement('button');
+                tagButton.classList.add('tag');
+                tagButton.textContent = tagText;
+                
+                const closeButton = document.createElement('button');
+                closeButton.innerHTML = '&times;';
+                closeButton.addEventListener('click', () => {
+                    tagsContainer.removeChild(tagButton);
+                });
+                
+                tagButton.appendChild(closeButton);
+                tagsContainer.appendChild(tagButton);
+                
+                tagInput.value = '';
+                }
+            }
+            });
+
+            tagColoumn.appendChild(tagsContainer);
+            tagColoumn.appendChild(tagInput);
+            newRow.appendChild(tagColoumn);
+
+            // create Faculty dropdown column
+            const dropdownFacultyColumn = document.createElement('td');
+            const dropdownFaculty = document.createElement('select');
+
+            dropdownFaculty.style.display= "block";
+            dropdownFaculty.style.width="100%";
+            dropdownFaculty.style.padding="0.375rem 2.25rem 0.375rem 0.75rem"
+
+            const option1Faculty = document.createElement('option');
+            option1Faculty.textContent = 'Select Faulty';
+            const option2Faculty = document.createElement('option');
+            option2Faculty.textContent = 'HMS';
+            const option3Faculty = document.createElement('option');
+            option3Faculty.textContent = 'MDT';
+            const option4Faculty = document.createElement('option');
+            option4Faculty.textContent = 'RKS';
+            const option5Faculty = document.createElement('option');
+            option5Faculty.textContent = 'PMS';
+            dropdownFaculty.appendChild(option1Faculty);
+            dropdownFaculty.appendChild(option2Faculty);
+            dropdownFaculty.appendChild(option3Faculty);
+            dropdownFaculty.appendChild(option4Faculty);
+            dropdownFaculty.appendChild(option5Faculty);
+            dropdownFacultyColumn.appendChild(dropdownFaculty);
+            newRow.appendChild(dropdownFacultyColumn);
+            
+
+            // add new row to table body
+            tbody.appendChild(newRow);
+
+
+            // var row = table.insertRow(1);
+            // var cell1 = row.insertCell(0);
+            // var cell2 = row.insertCell(1);
+            // var cell3 = row.insertCell(2);
+            // var cell4 = row.insertCell(3);
+            // var cell5 = row.insertCell(4);
+            // cell1.innerHTML = "#";
+            // cell2.innerHTML = appendChild(dateInput);
+            // cell3.innerHTML = "#"; 
+            // cell4.innerHTML = "#";
+            // cell5.innerHTML = "#";
+        }
+
+        // Code for making tags !!!
+
+        const tagsContainer = document.getElementById('tags-container');
+        const tagInput = document.getElementById('tag-input');
+    
+        tagInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            const tagText = tagInput.value.trim();
+            if (tagText !== '') {
+            const tagButton = document.createElement('button');
+            tagButton.classList.add('tag');
+            tagButton.textContent = tagText;
+            
+            const closeButton = document.createElement('button');
+            closeButton.innerHTML = '&times;';
+            closeButton.addEventListener('click', () => {
+                tagsContainer.removeChild(tagButton);
+            });
+            
+            tagButton.appendChild(closeButton);
+            tagsContainer.appendChild(tagButton);
+            
+            tagInput.value = '';
+            }
+
+            dropdown.appendChild
+        }
+        });
+
+        // For adding options in the select menu
+
+        // var textBox = document.getElementById("chapNameText");
+        // var add = document.getElementById("addBtn");
+        // function showTextBox(){
+        //     textBox.style.display = "block";
+        //     add.style.display = "block"
+        // }
+
+        // function addChapter(){
+        //     var chapter = textBox.value
+        //     var chapterName = document.getElementById("chapterName");
+        //     chapterName.options[chapterName.options.length] = new Option(chapter,'Value1');
+            
+        //     textBox.style.display = "none";
+        //     add.style.display = "none";
+        // }
+        
+    </script>
+</body>
+</html>

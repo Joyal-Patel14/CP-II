@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Create Chapter</title>
+
+    <link rel="stylesheet" href="./assets/css/bootstrap.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/side_dropdown.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <link rel="stylesheet" href="./assets/css/locomotive-scroll.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.slim.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <script src="./assets/js/locomotive-scroll.js"></script>
+    <script src="./assets/js/side_dropdown.js"></script>
+
+    <script>
+        var OnloadPage = 0;
+    </script>
+
+</head>
+
+<body class="user-select-none" >
+
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col">
+              <br>
+                <h1> Welcome, Prof. Bhavin &#128526;</h1>
+
+                <br>
+
+                <input type="radio" id="type_lab" name="type" value="Lecture">
+                <label for="type_lec">LEC</label>
+                <input type="radio" class="ml-3" id="type_lec" name="type" value="Lab">
+                <label for="type_lab">LAB</label>
+
+                <br><br> 
+
+                <select id="semester" class="form-control">
+                    <option value="default" selected >Select Sem</option>
+                    <option value="1">I</option>
+                    <option value="2">II</option>
+                    <option value="3">III</option>
+                    <option value="4">IV</option>
+                    <option value="5">V</option>
+                    <option value="6">VI</option>
+                    <option value="7">VII</option>
+                    <option value="8">VIII</option>
+                </select>
+        
+                <select id="subject" class="form-control ">
+                    <option value="default" selected >Select Subject</option>
+                    <option value="TOC">TOC</option>
+                    <option value="AI">AI</option>
+                    <option value="ITM">ITM</option>
+                    <option value="CC">CC</option>
+                    <option value="WT">WT</option>
+                    <option value="UED">UED</option>
+                </select>
+
+                <select id="class_lab" class="form-control ">
+                    <option value="default" selected >Select Class/LAB</option>
+                    <option value="Class_A">Class-A</option>
+                    <option value="Class_B">Class-B</option>
+                    <option value="Class_C">Class-C</option>
+                    <option value="Class_D">Class-D</option>
+                    <option value="AB9">AB9</option>
+                    <option value="AB12">AB12</option>
+                    <option value="AB14">AB14</option>
+                </select>
+
+                <!-- <span class="float-right">
+                    <img src="./assets/images/print.png" alt="print">
+                    <a href="#">Print Report</a>
+                </span> -->
+               
+            </div>
+        </div>
+    </div>
+        
+    <hr>
+
+    <!-- <div class="container-fluid">
+        <div class="row">
+            <div class="col-3">
+                <div class="sidenav ml-4 mt-2""> -->
+
+                    <!-- Chapter One -->
+                    <!-- <button class="dropdown-btn">
+                      <b id="chapter_name">Chapter 1</b> 
+                      <i class="fa fa-caret-down"></i>
+                    </button>
+                  
+                    <div class="dropdown-container">
+                        <a href="#">Topic 1</a>
+                        <a href="#">Topic 2</a>
+                        <a href="#">Topic 3</a>   
+                    </div> -->
+                  
+                    <!-- Chapter Two -->
+                    <!-- <button class="dropdown-btn">
+                      <b id="chapter_name">Chapter 2</b> 
+                      <i class="fa fa-caret-down"></i>
+                    </button>
+                  
+                    <div class="dropdown-container">
+                        <a href="#">Topic 1</a>
+                        <a href="#">Topic 2</a>
+                        <a href="#">Topic 3</a>   
+                    </div> -->
+                  
+                    <!-- Chapter Three -->
+                    <!-- <button class="dropdown-btn">
+                      <b id="chapter_name">Chapter 3</b> 
+                      <i class="fa fa-caret-down"></i>
+                    </button>
+                  
+                    <div class="dropdown-container">
+                        <a href="#">Topic 1</a>
+                        <a href="#">Topic 2</a>
+                        <a href="#">Topic 3</a>   
+                    </div> -->
+                  
+                    <!-- Chapter Four -->
+                    <!-- <button class="dropdown-btn">
+                      <b id="chapter_name">Chapter 4</b>  
+                      <i class="fa fa-caret-down"></i>
+                    </button>
+                  
+                    <div class="dropdown-container">
+                        <a href="#">Topic 1</a>
+                        <a href="#">Topic 2</a>
+                        <a href="#">Topic 3</a>   
+                    </div>
+                  
+                  </div>
+            </div> -->
+
+            <div class="col-8 mt-3">
+
+              <!-- <button type="button" onclick="showContentCreateChapter()" class="btn btn-primary">Create Chapter</button>  -->
+
+              <form id="lectureForm" style="display: inline;">
+                <label for="lectureTitle">Chapter Name:</label>
+                <input type="text" id="lectureTitle" required>
+                <!-- <button type="submit">Add Lecture</button> -->
+                <button type="submit" class="btn btn-primary ml-3">Create Chapter</button> 
+            </form>
+
+            <button class="btn btn-success ml-3">Save</button> 
+
+            <br><br>
+            <ul id="lectureList" class="mr-5"></ul>
+              <!-- <button type="button" onclick="showContentSelectChapter()" class="btn btn-primary ml-3">Select Chapter</button> -->
+
+              <!-- Create Chapter Division -->
+
+              <!-- <div id="createChpater" style="display: none; background-color: #E9EBEC; border-radius: .5rem;" class="mt-5 p-3">
+                <form action="">
+                  <label>Chapter Name :</label> <br>
+                  <input type="text" class="p-1"> <br>
+                  <input type="submit" class="btn btn-success mt-5">
+                </form>
+              </div> -->
+
+
+              <!-- Select Chapter Division -->
+
+
+              <!-- <div id="selectChapter" class="mt-5 p-3" style="display: none; background-color: #E9EBEC; border-radius: .5rem;">
+
+                <select id="chapterSelection" class="form-control mt-5">
+                  <option value="default" selected >Select Chapter</option>
+                  <option value="chapter 1">Chpater 1</option>
+                  <option value="chapter 2">Chapter 2</option>
+                  <option value="chpater 3">Chpater 3</option>
+                  <option value="chapter 4">Chapter 4</option>
+                </select>
+
+                <form action="" class="mt-5">
+                  <label>Topic Name :</label> <br>
+                  <input type="text" class="p-1"> 
+                  
+                  <br>
+
+                  <label>Date :</label>
+                  <input type="date" class="mt-4">
+
+                  <label class="ml-5">Starting of Session :</label>
+                  <input type="time" > 
+
+                  <label class="ml-5">Ending of Session :</label>
+                  <input type="time" > 
+                  
+                  <br>
+                  
+                  <select id="chapterSelection" class="form-control mt-4">
+                    <option value="default" selected >Delivered by</option>
+                    <option value="HMS">HMS</option>
+                    <option value="MDT">MDT</option>
+                  </select>
+
+                  <br>
+
+                  <textarea name="content" style="border-radius: 5px;" id="contentDelivered" cols="50" rows="4" class="mt-4" placeholder="Content be Delivered"></textarea>
+
+                  <br>
+
+                  <label class="mt-4">Method of Teaching :</label> <br>
+                  <input type="text" class="p-1">
+
+                  <br>
+
+                  <input type="submit" class="btn btn-success mt-5">
+                </form>
+
+              </div>
+
+            </div>
+        </div>
+    </div> -->
+
+    <script>
+        /* Loop through all dropdown buttons to toggle between hiding and showing its dropdown content - This allows the user to have multiple dropdowns without any conflict */
+        
+        // var dropdown = document.getElementsByClassName("dropdown-btn");
+        // var i;
+        
+        // for (i = 0; i < dropdown.length; i++) {
+        //   dropdown[i].addEventListener("click", function() {
+        //     this.classList.toggle("active");
+        //     var dropdownContent = this.nextElementSibling;
+        //     if (dropdownContent.style.display === "block") {
+        //       dropdownContent.style.display = "none";
+        //     } else {
+        //       dropdownContent.style.display = "block";
+        //     }
+        //   });
+        // }
+
+
+        // For Creating Chapter
+
+        const lectureForm = document.getElementById("lectureForm");
+        const lectureTitle = document.getElementById("lectureTitle");
+        const lectureList = document.getElementById("lectureList");
+
+        lectureForm.addEventListener("submit", (e) => {
+            e.preventDefault();
+            addLecture(lectureTitle.value);
+            lectureTitle.value = "";
+        });
+
+        function addLecture(title) {
+            const li = document.createElement("li");
+
+            const editInput = document.createElement("input");
+            editInput.style.marginBottom = "10px"
+            editInput.type = "text";
+            editInput.value = title;
+            editInput.classList.add("edit-input");
+            li.appendChild(editInput);
+
+            const editBtn = document.createElement("button");
+            editBtn.style.marginLeft = "10px";
+            editBtn.style.color = "white"
+            editBtn.style.backgroundColor = "green"
+            editBtn.style.borderColor = "green"
+            editBtn.textContent = "Edit";
+            editBtn.classList.add("edit-btn");
+            editBtn.addEventListener("click", () => {
+                editInput.disabled = !editInput.disabled;
+                editBtn.textContent = editInput.disabled ? "Edit" : "Save";
+            });
+            li.appendChild(editBtn);
+
+            const deleteBtn = document.createElement("button");
+            
+            deleteBtn.textContent = "Delete";
+            deleteBtn.style.marginLeft = "10px";
+            deleteBtn.style.color = "white"
+            deleteBtn.style.backgroundColor = "red"
+            deleteBtn.style.borderColor = "red"
+            deleteBtn.classList.add("delete-btn");
+            deleteBtn.addEventListener("click", () => {
+                lectureList.removeChild(li);
+            });
+            
+            li.appendChild(deleteBtn);
+
+            lectureList.appendChild(li);
+        }
+
+
+        // For Create Chapter and Select Chapter Button //
+
+
+
+        var createChapter = document.getElementById('createChpater');
+
+        var displayCreateChapter = createChapter.style.display;
+
+        var selectChpater = document.getElementById('selectChapter');
+
+        var displaySelectChapter = selectChpater.style.display;
+
+
+        // function showContentCreateChapter() {
+
+        //   if (displayCreateChapter == 'none'){
+        //     createChapter.style.display = 'block';
+        //     selectChpater.style.display = 'none';
+        //   }
+          
+        // }
+       
+
+        // function showContentSelectChapter() {
+          
+
+        //   if(displaySelectChapter == 'none'){
+        //     selectChpater.style.display = 'block';
+        //     createChapter.style.display = 'none';
+        //   }
+          
+        // }
+
+
+        // var textvalue = document.getElementById('tb').value;
+        // document.getElementById('chapter_name').innerHTML = textvalue;
+
+      </script>
+</body>
+
+</html>

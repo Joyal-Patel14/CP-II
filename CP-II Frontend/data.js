@@ -1,0 +1,1 @@
+MONGO_URL = "mongodb+srv://joyalpatel14102:wiO5ny89ZZoUkVv9@cluster0.mkprwsr.mongodb.net/cp2DB"

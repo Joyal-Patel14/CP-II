@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+  </style>
+</head>
+<body>
+  <label for="start-date">Start Date:</label>
+  <input type="date" id="start-date" name="start-date">
+
+  <label for="end-date">End Date:</label>
+  <input type="date" id="end-date" name="end-date">
+
+  <div id="mondays-container"></div>
+
+  <script>
+   // Get the input elements
+var startDateInput = document.getElementById("start-date");
+var endDateInput = document.getElementById("end-date");
+var mondaysContainer = document.getElementById("mondays-container");
+
+// Create an array to store the Monday dates
+var mondayDates = [];
+
+// Add an event listener to the start date input element
+startDateInput.addEventListener("change", function() {
+
+  // Clear the Monday dates array
+  mondayDates = [];
+  
+  // Get the start and end dates as Date objects
+  var startDate = new Date(startDateInput.value);
+  var endDate = new Date(endDateInput.value);
+  
+  // Loop through all dates between the start and end dates
+  while (startDate <= endDate) {
+  
+    // Check if the current date is a Monday
+    if (startDate.getDay() == 1) {
+    
+      // Add the Monday date to the array
+      mondayDates.push(new Date(startDate));
+    }
+    
+    // Move to the next day
+    startDate.setDate(startDate.getDate() + 1);
+  }
+  
+  // Call the updateMondays function to update the Monday date selection inputs
+  updateMondays();
+});
+
+// Add an event listener to the end date input element
+endDateInput.addEventListener("change", function() {
+
+  // Clear the Monday dates array
+  mondayDates = [];
+  
+  // Get the start and end dates as Date objects
+  var startDate = new Date(startDateInput.value);
+  var endDate = new Date(endDateInput.value);
+  
+  // Loop through all dates between the start and end dates
+  while (startDate <= endDate) {
+  
+    // Check if the current date is a Monday
+    if (startDate.getDay() == 1) {
+    
+      // Add the Monday date to the array
+      mondayDates.push(new Date(startDate));
+    }
+    
+    // Move to the next day
+    startDate.setDate(startDate.getDate() + 1);
+  }
+  
+  // Call the updateMondays function to update the Monday date selection inputs
+  updateMondays();
+});
+
+// Function to update the Monday date selection inputs
+function updateMondays() {
+
+  // Remove any existing Monday date selection inputs
+  mondaysContainer.innerHTML = "";
+  
+  // Loop through all Monday dates
+  for (var i = 0; i < mondayDates.length; i++) {
+  
+    // Create a new label element for the Monday date
+    var label = document.createElement("label");
+    label.innerHTML = "Monday " + (i + 1) + ":";
+    
+    // Create a new input element for the Monday date
+    var input = document.createElement("input");
+    input.type = "date";
+    input.name = "monday-" + (i + 1);
+    input.value = mondayDates[i].toISOString().substring(0, 10);
+    
+    // Add the label and input elements to the container element
+    mondaysContainer.appendChild(label);
+    mondaysContainer.appendChild(input);
+  }
+}
+
+
+  </script>
+</body>
+</html>
